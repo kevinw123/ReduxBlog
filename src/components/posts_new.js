@@ -10,13 +10,20 @@ class PostsNew extends Component {
           type="text"
           {...field.input}
         />
+        {field.meta.error}
       </div>
     );
   }
 
+  onSubmit(values){
+      console.log(values);
+  }
+
   render() {
+    const { handleSubmit } = this.props;
+
     return (
-      <form>
+      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <Field
           label="Title"
           name="title"
@@ -32,6 +39,7 @@ class PostsNew extends Component {
           name="content"
           component={this.renderField}
         />
+        <button type="submit" className="btn btn-primary">Submit</button>
       </form>
     );
   }
@@ -42,15 +50,15 @@ function validate(values){
 
   // Validate the inputs from 'values'
   if(!values.title){
-    error.title = "Enter a title!";
+    errors.title = "Enter a title";
   }
 
   if(!values.categories){
-    error.categories = "Enter some categories";
+    errors.categories = "Enter some categories";
   }
 
   if(!values.content){
-    error.content = "Enter some content";
+    errors.content = "Enter some content";
   }
 
   // if errors is empty, the form is fine to submit
