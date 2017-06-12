@@ -1,7 +1,7 @@
 # ReduxBlog
 
 ---
-> Clone repository
-> npm install
-> npm start
+- Clone repository
+- npm install
+- npm start
 ```
